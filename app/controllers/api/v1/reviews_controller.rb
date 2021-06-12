@@ -7,7 +7,7 @@ module Api
         if review.save
           render json: ReviewSerializer.new(review).serialized_json
         else
-          render { error: review.errors.messages }, status: 422
+          render json: { error: review.errors.messages }, status: 422
         end
       end
 
@@ -17,7 +17,7 @@ module Api
         if review.destroy
           head :no_content
         else
-          render { error: review.errors.messages }, status: 422
+          render json: { error: review.errors.messages }, status: 422
         end
       end
 
